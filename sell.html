@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en-GB"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0F1B2D">
+<style>body{margin:0}</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' rx='7' fill='%230F1B2D'/%3E%3Cpath d='M18 3 L21 15 L33 18 L21 21 L18 33 L15 21 L3 18 L15 15 Z' fill='%23D4A23A'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<title>Sell to Polestar</title>
+<meta name="description" content="Need to sell a flat, house or small commercial property in Renfrewshire, East Renfrewshire or Glasgow? Polestar Property Solutions buys direct, in any condition, on your timescale. No-obligation offers, explained in plain English.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+</head>
+<body>
+<style>
+/* Layout: same Polestar bands as the main site; seller journey runs situation → process → honest comparison → questions → offer form */
+:root{
+  --paper:#F6F4EF; --stone:#ECE8DE; --card:#FFFFFF; --line:#E2DED3;
+  --ink:#0F1B2D; --text:#3A4458; --muted:#5D6679;
+  --navy:#0F1B2D; --navy-2:#142339; --navy-line:#2A3F5F; --on-navy:#FFFFFF; --on-navy-soft:#C8D1DE; --on-navy-muted:#8E9BB0;
+  --brass:#D4A23A; --brass-ink:#6B4F12; --brass-wash:#F3E7C8; --ok:#1E7A4C; --field:#B9B3A5;
+  --display:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#111A27; --stone:#16212F; --card:#1A2636; --line:#2A3A50;
+  --ink:#F1F3F7; --text:#C9D1DD; --muted:#9AA6B8;
+  --navy:#0A1320; --navy-2:#121F31; --navy-line:#24364F;
+  --brass-ink:#E2B65A; --brass-wash:#2A2717; --ok:#4CC08A; --field:#3B4C63; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#111A27; --stone:#16212F; --card:#1A2636; --line:#2A3A50;
+  --ink:#F1F3F7; --text:#C9D1DD; --muted:#9AA6B8;
+  --navy:#0A1320; --navy-2:#121F31; --navy-line:#24364F;
+  --brass-ink:#E2B65A; --brass-wash:#2A2717; --ok:#4CC08A; --field:#3B4C63; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--text);font:400 17px/1.6 var(--body)}
+h1,h2,h3{font-family:var(--display);color:var(--ink);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--ink)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section .wrap{padding-block:clamp(56px,8vw,96px)}
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:clamp(18px,2vw,22px);font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--brass-ink);margin-bottom:14px}
+.eyebrow::before{content:"";flex:none;width:.95em;height:.95em;background:currentColor;clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%)}
+.dark .eyebrow{color:var(--brass)}
+h2{font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1.1;letter-spacing:-.5px;margin-bottom:20px}
+.lede{max-width:680px;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 24px;border-radius:6px;font-weight:600;text-decoration:none;font-family:var(--body);font-size:16px;cursor:pointer;border:0}
+.btn-brass{background:var(--brass);color:#0F1B2D}
+.btn-ghost{border:1.5px solid #6E7F98;color:var(--on-navy)}
+.btn-ink{background:#0F1B2D;color:#FFFFFF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn-ink{background:var(--brass);color:#0F1B2D}}
+:root[data-theme="dark"] .btn-ink{background:var(--brass);color:#0F1B2D}
+
+header{background:var(--navy);border-bottom:1px solid var(--navy-line)}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--on-navy)}
+.brand svg{width:52px;height:52px;flex:none}
+.brand b{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.1;display:block;letter-spacing:.3px}
+.brand small{display:block;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--brass);margin-top:2px}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px;font-size:15px;font-weight:500}
+nav a{color:var(--on-navy-soft);text-decoration:none;padding:10px 0}
+nav a:hover{color:var(--on-navy)}
+nav .btn{padding:8px 18px;min-height:44px}
+
+.dark{background:var(--navy);color:var(--on-navy)}
+.dark h1,.dark h2,.dark h3{color:var(--on-navy)}
+.hero .wrap{display:flex;flex-wrap:wrap;gap:40px;align-items:center}
+.hero-main{flex:999 1 520px;min-width:0}
+.hero h1{font-weight:800;font-size:clamp(42px,6.6vw,80px);line-height:1.02;letter-spacing:-1px;margin-bottom:22px}
+.hero .callout{flex:1 1 100%;justify-content:center;text-align:center;font-size:clamp(22px,3.2vw,36px);letter-spacing:4px;margin:0 0 4px;padding-bottom:28px;border-bottom:1px solid var(--navy-line)}
+.hero .callout::after{content:"";flex:none;width:.95em;height:.95em;background:currentColor;clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%)}
+.hero h1 .hl{display:block;color:var(--brass)}
+.hook{font-family:var(--display);font-weight:700;font-size:clamp(19px,2.2vw,24px);line-height:1.4;color:var(--on-navy);max-width:640px;margin-bottom:18px}
+.hero .lead{font-size:19px;color:var(--on-navy-soft);max-width:600px;margin-bottom:32px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero-side{flex:1 1 280px;min-width:0;display:grid;gap:12px}
+.fact{border:1px solid var(--navy-line);background:var(--navy-2);border-radius:10px;padding:18px 22px}
+.fact b{font-family:var(--display);font-size:19px;display:block;margin-bottom:2px}
+.fact span{font-size:15px;color:var(--on-navy-soft)}
+
+.letter{max-width:780px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(24px,5vw,56px)}
+.letter-body{display:grid;gap:16px;font-size:18px;line-height:1.7;color:var(--text)}
+.sign{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.faces{display:flex}
+.faces img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--card);background:var(--stone)}
+.faces img+img{margin-left:-14px}
+.sign p{font-size:15px;color:var(--muted)}
+.sign b{display:block;font-family:var(--display);font-size:20px;color:var(--ink)}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.tags a{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:1px solid var(--navy-line);background:var(--navy-2);color:var(--on-navy);border-radius:999px;text-decoration:none;font-size:15px;font-weight:500}
+.tags a:hover{border-color:var(--brass);color:var(--brass)}
+.sit{scroll-margin-top:24px}
+.sit:target{border-color:var(--brass);box-shadow:0 0 0 3px var(--brass)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.sit{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:8px;align-content:start}
+.sit h3{font-size:20px}
+.sit p{color:var(--muted);font-size:16px}
+.sit.care{background:var(--brass-wash);border-color:transparent}
+.sit.care p{color:var(--text)}
+.stone{background:var(--stone)}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.step{display:flex;flex-direction:column;gap:10px}
+.step .n{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--navy);color:var(--on-navy);font:700 19px var(--display)}
+.step h3{font-size:22px}
+
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{width:100%;min-width:640px;border-collapse:collapse;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:14px 18px;border-bottom:1px solid var(--line)}
+thead th{font-family:var(--display);font-size:17px;color:var(--ink);background:var(--stone)}
+thead th.us{background:var(--navy);color:var(--on-navy)}
+tbody th{font-weight:600;color:var(--ink);width:18%}
+td.us{background:var(--brass-wash);color:var(--ink)}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+.verdict{margin-top:24px;max-width:760px;font-size:18px;color:var(--ink)}
+.verdict strong{font-family:var(--display)}
+
+.qs{display:grid;gap:14px;max-width:820px;counter-reset:q;padding:0;margin:0;list-style:none}
+.qs li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;padding:16px 0;border-bottom:1px solid var(--navy-line)}
+.qs li::before{counter-increment:q;content:counter(q);font:800 22px var(--display);color:var(--brass);min-width:28px}
+.qs b{display:block;font-family:var(--display);font-size:19px;color:var(--on-navy)}
+.qs span{color:var(--on-navy-soft);font-size:16px}
+.qs-note{margin-top:28px;color:var(--on-navy-soft);max-width:760px}
+
+.faq{display:grid;gap:12px;max-width:860px}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px}
+summary{cursor:pointer;list-style:none;padding:18px 22px;font-family:var(--display);font-weight:700;font-size:18px;color:var(--ink);display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;color:var(--brass-ink);flex:none}
+details[open] summary::after{content:"–"}
+details>div{padding:0 22px 20px;display:grid;gap:10px}
+
+.contact .wrap{display:flex;flex-wrap:wrap;gap:48px}
+.contact-info{flex:1 1 300px;min-width:0;display:grid;gap:16px;align-content:start}
+.contact-info .v{font-weight:600;color:var(--ink);word-break:break-all;user-select:all}
+.copy{background:none;border:1px solid var(--field);color:var(--ink);border-radius:6px;padding:6px 12px;font:500 14px var(--body);cursor:pointer;min-height:36px;justify-self:start}
+.promise{display:grid;gap:8px;padding:0;margin:0;list-style:none}
+.promise li{display:flex;gap:10px;align-items:flex-start}
+.promise svg{flex:none;margin-top:4px;stroke:var(--ok)}
+.formbox{flex:999 1 520px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:clamp(20px,4vw,36px)}
+form{display:grid;gap:18px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+label.f{display:grid;gap:6px;font-size:15px;font-weight:600;color:var(--ink)}
+label.f em{font-style:normal;font-weight:400;color:var(--muted)}
+input,select,textarea{font:400 16px var(--body);color:var(--text);background:var(--card);border:1px solid var(--field);border-radius:6px;padding:12px 14px;min-height:48px;width:100%}
+textarea{resize:vertical;min-height:120px}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5}
+.consent input{width:20px;height:20px;min-height:0;margin:2px 0 0;flex:none;accent-color:var(--ink)}
+.note{font-size:13px;color:var(--muted)}
+.thanks{text-align:center;padding:40px 8px;display:grid;gap:12px;justify-items:center}
+.thanks svg{stroke:var(--ok)}
+
+footer{background:#0A1422;color:#8E9BB0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding-block:40px}
+footer b{color:#FFFFFF;font-family:var(--display);font-size:16px}
+footer a{color:#C8D1DE}
+footer .col{display:grid;gap:4px;align-content:start}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 2 L21 15 L34 18 L21 21 L18 34 L15 21 L2 18 L15 15 Z" fill="#D4A23A"></path><circle cx="18" cy="18" r="2.5" fill="#0F1B2D"></circle></svg>
+      <span><b>Polestar</b><small>Property Solutions</small></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="#situations">Your situation</a>
+      <a href="#how">How it works</a>
+      <a href="#compare">Is it right for you?</a>
+      <a href="#faq">Questions</a>
+      <a class="btn btn-brass" href="#offer">Get an offer</a>
+    </nav>
+  </div>
+</header>
+
+<section id="top" class="dark hero">
+  <div class="wrap">
+    <p class="eyebrow callout">Calling all motivated sellers</p>
+    <div class="hero-main">
+      <h1>Need to sell? <span class="hl">You're in the right place.</span></h1>
+      <p class="hook">Inherited a property? Mortgage issues? Sale fallen through? Tired of being a landlord?</p>
+      <p class="lead">We buy flats, houses and small commercial properties directly, in any condition, on a timescale that suits you. No chain, no strangers trooping through for viewings, and no pressure to say yes.</p>
+      <div class="ctas">
+        <a class="btn btn-brass" href="#offer">Get a no-obligation offer</a>
+        <a class="btn btn-ghost" href="#compare">Is selling to us right for me?</a>
+      </div>
+      <nav class="tags" aria-label="Jump to your situation">
+        <a href="#s-inherited">Inherited</a><a href="#s-separation">Separation</a><a href="#s-mortgage">Mortgage issues</a><a href="#s-work">Needs work</a><a href="#s-tenanted">Tenanted</a><a href="#s-fellthrough">Sale fell through</a><a href="#s-moving">Moving away</a>
+      </nav>
+    </div>
+    <div class="hero-side">
+      <div class="fact"><b>You choose the date</b><span>Move quickly or take your time. We work to your timescale.</span></div>
+      <div class="fact"><b>Any condition</b><span>Damp, dated, unmortgageable or full of belongings. We buy it as it is.</span></div>
+      <div class="fact"><b>Real people, not a call centre</b><span>You'll speak directly to Bernie or Jade, the company's directors.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="note" class="stone">
+  <div class="wrap">
+    <div class="letter">
+      <p class="eyebrow">A note from us</p>
+      <h2>We know life doesn't always go to plan.</h2>
+      <div class="letter-body">
+        <p>Between us, we've spent our working lives alongside people from every walk of life. Jade has been into hundreds of homes as a gas engineer, and has seen first-hand how a bereavement, a bad run of health, a relationship ending or money getting tight can turn a house into a weight on someone's shoulders. Bernie's years in the Forces and offshore taught him that anyone can hit a rough patch, and that how you're treated when it happens matters.</p>
+        <p>So if you're reading this because something has gone wrong, or simply because you need a change, you're not alone and you've nothing to be embarrassed about. We'll listen first, treat you with respect, and never rush you into anything.</p>
+        <p>And if we're not the right answer for you, we'll still do our best to point you towards someone who is.</p>
+      </div>
+      <div class="sign">
+        <div class="faces">
+          <img src="data:image/jpeg;base64,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" alt="Bernie" width="64" height="64">
+          <img src="data:image/jpeg;base64,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" alt="Jade" width="64" height="64">
+        </div>
+        <p><b>Bernie &amp; Jade</b>Directors, Polestar Property Solutions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="situations">
+  <div class="wrap">
+    <p class="eyebrow">Your situation</p>
+    <h2>Every sale has a story behind it.</h2>
+    <p class="lede">Behind every sale there's a person, and often a difficult season of life. Whatever has brought you here, we'll listen without judgement and go at a pace that feels right for you. Share as much or as little as you like.</p>
+    <div class="grid">
+      <div class="sit" id="s-inherited"><h3>You've inherited a property</h3><p>Dealing with a loved one's home during an executry is hard. We can work alongside the executor's solicitor and move at a pace that feels right.</p></div>
+      <div class="sit" id="s-separation"><h3>Separation or divorce</h3><p>A clear sale and a clean split, with both sides' solicitors kept informed throughout.</p></div>
+      <div class="sit" id="s-moving"><h3>You're moving away</h3><p>A new job or a move closer to family. We can line our timing up with yours so you're not paying for an empty home.</p></div>
+      <div class="sit" id="s-tenanted"><h3>You're a tired landlord</h3><p>Had enough of letting? We can buy with tenants in place, so you don't have to end tenancies or wait for the property to empty.</p></div>
+      <div class="sit" id="s-work"><h3>It needs work</h3><p>Damp, an old kitchen, a roof to fix, or a property lenders won't touch. We'll factor the work into a fair, explained offer.</p></div>
+      <div class="sit" id="s-fellthrough"><h3>Your sale fell through</h3><p>Stuck on the market, or a buyer pulled out at the last minute? We're a cash-ready buyer with no chain above us.</p></div>
+      <div class="sit"><h3>Downsizing or changing needs</h3><p>Moving somewhere smaller, closer to help, or easier to manage. We'll keep things simple and unhurried.</p></div>
+      <div class="sit care" id="s-mortgage"><h3>Money worries or arrears</h3><p>If you're behind on mortgage payments, speak to your lender and a free adviser such as Citizens Advice Scotland first. There may be options that let you keep your home. If selling is still the right choice, we'll talk it through openly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="stone">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>Four steps, at your pace.</h2>
+    <p class="lede">You can stop at any point before the sale is legally agreed, with no cost and no hard feelings.</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Tell us about it</h3><p>Fill in the short form below with the address and a little about the property. It takes about two minutes.</p></div>
+      <div class="step"><span class="n">2</span><h3>We call you back</h3><p>Usually within 2 working days. We'll ask a few questions and arrange a visit at a time that suits you.</p></div>
+      <div class="step"><span class="n">3</span><h3>A written offer, explained</h3><p>We put our offer in writing and show you how we worked it out, so you can compare it properly.</p></div>
+      <div class="step"><span class="n">4</span><h3>Solicitors finish the sale</h3><p>Your solicitor and ours handle the missives. You pick the completion date and hand over the keys.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <p class="eyebrow">Is it right for you?</p>
+    <h2>The honest comparison.</h2>
+    <p class="lede">Selling to a property company isn't the right choice for everyone. Here's how the main options really compare, so you can decide for yourself.</p>
+    <div class="tablebox" role="region" aria-label="Comparison of ways to sell" tabindex="0">
+      <table>
+        <thead>
+          <tr><th scope="col"></th><th scope="col">Estate agent</th><th scope="col">Property auction</th><th scope="col" class="us">Selling to Polestar</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Price</th><td>Usually the highest, if the property suits buyers and the market</td><td>Can vary a lot depending on the room on the day</td><td class="us">Usually below full market value, because we take on the work, costs and risk</td></tr>
+          <tr><th scope="row">Speed</th><td>Often several months from listing to completion</td><td>Fast once sold, but you wait for the next auction date</td><td class="us">Set by you and the solicitors, often a matter of weeks</td></tr>
+          <tr><th scope="row">Certainty</th><td>Buyers can pull out or a chain can collapse</td><td>Sale is binding once the hammer falls, if it sells</td><td class="us">No chain and no mortgage approval to wait on</td></tr>
+          <tr><th scope="row">Condition</th><td>Tidy, mortgageable homes do best</td><td>Any condition</td><td class="us">Any condition</td></tr>
+          <tr><th scope="row">Viewings</th><td>Many, often over weeks</td><td>Open viewing days</td><td class="us">Usually one visit</td></tr>
+          <tr><th scope="row">Costs</th><td>Agent's fee, Home Report and legal fees</td><td>Auction fees, Home Report and legal fees</td><td class="us">No agent or auction fees. Any costs are agreed in writing first</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="verdict"><strong>Our advice:</strong> if getting the highest possible price matters most and you have time, an estate agent is probably your best route, and we'll tell you so. If speed, certainty or the property's condition matter more, we may be a good fit.</p>
+  </div>
+</section>
+
+<section id="questions" class="dark">
+  <div class="wrap">
+    <p class="eyebrow">Before you sell to anyone</p>
+    <h2>Five questions to ask any quick-sale buyer.</h2>
+    <ol class="qs">
+      <li><div><b>Are you the actual buyer?</b><span>Some firms are middlemen who pass your details on to someone else.</span></div></li>
+      <li><div><b>How did you work out your offer?</b><span>A fair buyer can show you the figures, not just a number.</span></div></li>
+      <li><div><b>Could the price drop before the sale is agreed?</b><span>Watch out for an offer that falls at the last minute. Ask what would change it, and why.</span></div></li>
+      <li><div><b>Do I have to pay anything up front?</b><span>You shouldn't be asked for a fee just to receive an offer.</span></div></li>
+      <li><div><b>Can I use my own solicitor?</b><span>You should always be free to choose your own legal adviser.</span></div></li>
+    </ol>
+    <p class="qs-note">Ask us all five. We'll answer every one in writing.</p>
+  </div>
+</section>
+
+<section id="faq" class="stone">
+  <div class="wrap">
+    <p class="eyebrow">Questions</p>
+    <h2>What sellers usually ask us.</h2>
+    <div class="faq">
+      <details><summary>How much will you offer?</summary><div><p>We look at what the property would be worth once any work is done, then take off the cost of the work, the buying and selling costs, and a margin for the risk we take on. That's why our offer is usually below full market value. We'll show you the figures so nothing is a mystery.</p></div></details>
+      <details><summary>How quickly can the sale go through?</summary><div><p>It mainly depends on the solicitors and the property's title deeds. Straightforward sales can often complete in a few weeks. If you need longer, that's fine too.</p></div></details>
+      <details><summary>Do I need a Home Report?</summary><div><p>It depends on how the property is sold. We'll talk you through what's needed in your situation, and your solicitor can confirm it.</p></div></details>
+      <details><summary>Can I change my mind?</summary><div><p>Yes. In Scotland a sale only becomes legally binding when the missives are concluded between the two solicitors. Until then you're free to walk away.</p></div></details>
+      <details><summary>Will you buy a property with tenants in it?</summary><div><p>Often, yes. Tell us about the tenancy when you get in touch and we'll explain how it would work.</p></div></details>
+      <details><summary>Is my enquiry confidential?</summary><div><p>Yes. We only use your details to respond to you and never sell or share them. Our privacy notice on the main Polestar page explains how we handle your information.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section id="offer" class="contact">
+  <div class="wrap">
+    <div class="contact-info">
+      <p class="eyebrow">Get an offer</p>
+      <h2>Tell us about your property.</h2>
+      <p>No obligation and no pressure. One of us will be in touch personally, usually within 2 working days.</p>
+      <ul class="promise">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4 10-10"></path></svg><span>A written offer with the figures explained</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4 10-10"></path></svg><span>You choose the completion date</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4 10-10"></path></svg><span>Free to walk away until missives are concluded</span></li>
+      </ul>
+      <div style="display:grid;gap:6px;margin-top:8px">
+        <span class="note">Prefer email?</span>
+        <span class="v" id="email">polestar.property.team@gmail.com</span>
+        <button class="copy" id="copyEmail" type="button">Copy email</button>
+      </div>
+    </div>
+
+    <div class="formbox">
+      <div class="thanks" id="thanks" hidden role="status">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg>
+        <h3 style="font-size:23px" id="thanksTitle">Thanks for getting in touch.</h3>
+        <p class="note" id="thanksNote"></p>
+        <button class="btn btn-ink" type="button" id="again">Back to the form</button>
+      </div>
+      <form id="enquiry">
+        <div class="row">
+          <label class="f" for="name">Your name<input id="name" name="name" type="text" autocomplete="name" required></label>
+          <label class="f" for="phone">Phone<input id="phone" name="phone" type="tel" autocomplete="tel" required></label>
+        </div>
+        <div class="row">
+          <label class="f" for="mail">Email<input id="mail" name="email" type="email" autocomplete="email" required></label>
+          <label class="f" for="postcode">Property postcode<input id="postcode" name="postcode" type="text" required></label>
+        </div>
+        <div class="row">
+          <label class="f" for="ptype">Property type
+            <select id="ptype" name="ptype"><option>Flat</option><option>House</option><option>Small commercial</option><option>Other</option></select>
+          </label>
+          <label class="f" for="beds">Bedrooms
+            <select id="beds" name="beds"><option>Studio</option><option>1</option><option selected>2</option><option>3</option><option>4+</option><option>Not applicable</option></select>
+          </label>
+        </div>
+        <div class="row">
+          <label class="f" for="cond">Condition
+            <select id="cond" name="cond"><option>Good, ready to live in</option><option selected>Needs some updating</option><option>Needs major work</option><option>Not sure</option></select>
+          </label>
+          <label class="f" for="tenants">Is it tenanted?
+            <select id="tenants" name="tenants"><option>No, it's empty</option><option>No, I live there</option><option>Yes, tenants in place</option></select>
+          </label>
+        </div>
+        <label class="f" for="when">When would you ideally like to sell?
+          <select id="when" name="when"><option>As soon as possible</option><option>Within 3 months</option><option>Within 6 months</option><option>Just exploring options</option></select>
+        </label>
+        <label class="f" for="story">Anything else we should know? <em>(optional)</em><textarea id="story" name="story" placeholder="For example, why you're selling or any work the property needs. Share only what you're comfortable with."></textarea></label>
+        <label class="consent" for="consent"><input id="consent" type="checkbox" required><span>I agree to Polestar Property Solutions Ltd using these details to respond to my enquiry, as set out in its <a href="index.html#privacy">privacy notice</a>. We never sell or share your details.</span></label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <input type="hidden" name="_subject" value="Polestar website enquiry">
+        <p class="note" id="formErr" role="alert" hidden style="color:#B3261E">Sorry, that did not send. Please email us at polestar.property.team@gmail.com instead.</p>
+        <div><button class="btn btn-ink" type="submit">Request my offer</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="col">
+      <b>Polestar Property Solutions Ltd</b>
+      <span>Registered in Scotland · Company no. SC889949</span>
+      <span>Registered office: 71 Kilbowie Road, Clydebank, G81 1BL, United Kingdom</span>
+    </div>
+    <div class="col">
+      <a href="index.html#privacy">Privacy notice</a>
+      <span>polestar.property.team@gmail.com</span>
+      <span>© 2026 Polestar Property Solutions Ltd</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('enquiry'), thanks=document.getElementById('thanks');
+  var ENDPOINT=""; /* paste the Formspree form address here once it is set up */
+  var TO="polestar.property.team@gmail.com";
+  var err=document.getElementById('formErr'), sub=form.querySelector('button[type=submit]');
+  function done(title,note){document.getElementById('thanksTitle').textContent=title;document.getElementById('thanksNote').textContent=note;form.hidden=true;thanks.hidden=false;}
+  function fail(){err.hidden=false;sub.disabled=false;sub.textContent=sub.dataset.t;}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();err.hidden=true;
+    var fd=new FormData(form);
+    if(fd.get('_gotcha')){return;}
+    if(ENDPOINT){
+      sub.dataset.t=sub.textContent;sub.disabled=true;sub.textContent='Sending...';
+      fetch(ENDPOINT,{method:'POST',body:fd,headers:{'Accept':'application/json'}}).then(function(r){
+        if(r.ok){form.reset();sub.disabled=false;sub.textContent=sub.dataset.t;done('Thanks for getting in touch.',"We'll be in touch personally, usually within 2 working days.");}else{fail();}
+      }).catch(fail);
+    }else{
+      var L={"name": "Name", "phone": "Phone", "email": "Email", "topic": "Topic", "postcode": "Postcode", "message": "Message", "ptype": "Property type", "beds": "Bedrooms", "cond": "Condition", "tenants": "Tenanted", "when": "Timing", "story": "Details"}, lines=[];
+      fd.forEach(function(v,k){if(L[k]&&v){lines.push(L[k]+': '+v);}});
+      location.href='mailto:'+TO+'?subject='+encodeURIComponent('Website enquiry')+'&body='+encodeURIComponent(lines.join('\n'));
+      done('One more step.','Your email app should have opened with your message ready. Please press send. If it did not open, email us at '+TO+'.');
+    }
+  });
+  document.getElementById('again').addEventListener('click',function(){form.reset();thanks.hidden=true;form.hidden=false;});
+  var btn=document.getElementById('copyEmail'), email=document.getElementById('email');
+  btn.addEventListener('click',function(){
+    function sel(){var r=document.createRange();r.selectNodeContents(email);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected, now copy';}
+    try{navigator.clipboard.writeText(email.textContent).then(function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email'},2000);},sel);}catch(e){sel();}
+  });
+})();
+</script>
+
+
+</body></html>
