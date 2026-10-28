@@ -389,7 +389,7 @@ footer .col{display:grid;gap:4px;align-content:start}
 <script>
 (function(){
   var form=document.getElementById('enquiry'), thanks=document.getElementById('thanks');
-  var ENDPOINT=""; /* paste the Formspree form address here once it is set up */
+  var ENDPOINT="https://formspree.io/f/mnppdeke";
   var TO="polestar.property.team@gmail.com";
   var err=document.getElementById('formErr'), sub=form.querySelector('button[type=submit]');
   function done(title,note){document.getElementById('thanksTitle').textContent=title;document.getElementById('thanksNote').textContent=note;form.hidden=true;thanks.hidden=false;}

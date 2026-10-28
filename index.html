@@ -318,7 +318,7 @@ footer .col{display:grid;gap:4px;align-content:start}
       <p>We use your details because you've asked us to contact you (your consent), because it's needed to take steps towards an agreement you're considering with us, or because we have a legitimate interest in responding to business enquiries. We will not send you marketing unless you ask us to.</p>
 
       <h3>Who we share it with</h3>
-      <p>We never sell your details. We only share them where it's needed to progress something you've asked us about, for example with a solicitor, surveyor or lender during a property purchase, and we'll tell you before we do. Our email is provided by Google, which may store data outside the UK under recognised legal safeguards.</p>
+      <p>We never sell your details. We only share them where it's needed to progress something you've asked us about, for example with a solicitor, surveyor or lender during a property purchase, and we'll tell you before we do. Our email is provided by Google, and messages sent through our website forms are handled by Formspree, our form service, before reaching us. Both may store data outside the UK under recognised legal safeguards.</p>
 
       <h3>How long we keep it</h3>
       <p>If your enquiry doesn't lead to a deal, we delete your details within 12 months of our last contact. If it does, we keep the records we need for legal, tax and accounting purposes, usually for up to 6 years.</p>
@@ -348,7 +348,7 @@ footer .col{display:grid;gap:4px;align-content:start}
 <script>
 (function(){
   var form=document.getElementById('enquiry'), thanks=document.getElementById('thanks');
-  var ENDPOINT=""; /* paste the Formspree form address here once it is set up */
+  var ENDPOINT="https://formspree.io/f/mnppdeke";
   var TO="polestar.property.team@gmail.com";
   var err=document.getElementById('formErr'), sub=form.querySelector('button[type=submit]');
   function done(title,note){document.getElementById('thanksTitle').textContent=title;document.getElementById('thanksNote').textContent=note;form.hidden=true;thanks.hidden=false;}
