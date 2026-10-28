@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://polestarpropertysolutions.co.uk/sitemap.xml
