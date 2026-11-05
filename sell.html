@@ -97,6 +97,8 @@ nav .btn{padding:8px 18px;min-height:44px}
 .proof b{font-family:var(--display);font-size:17px}
 .proof span{font-size:14.5px;color:var(--on-navy-soft)}
 @media (prefers-reduced-motion: reduce){.path,.path i{transition:none}}
+@media (max-width:560px){.hero .wrap{padding-top:92px}.hero .eyebrow{font-size:12.5px;letter-spacing:2.2px;align-items:flex-start;line-height:1.6}.hero .eyebrow::before{margin-top:.2em}}
+.nw{white-space:nowrap}
 
 .hook{font-family:var(--display);font-weight:700;font-size:clamp(19px,2.2vw,24px);line-height:1.4;color:var(--on-navy);max-width:640px;margin-bottom:16px}
 .hero .lead{margin-bottom:0}
@@ -491,12 +493,12 @@ footer .col{display:grid;gap:4px;align-content:start}
       x.globalAlpha=a;x.fillStyle='#E8EEF7';x.beginPath();x.arc(s.x,s.y,s.r,0,6.283);x.fill()}
     x.globalAlpha=1;
     // pole star
-    var px=W<700?W-46:W*0.8, py=W<700?52:H*0.2, R=W<700?16:Math.min(34,W*0.026), pulse=reduce?1:1+0.06*Math.sin(t/900);
+    var px=W<700?W-46:W*0.8, py=W<700?40:H*0.2, R=W<700?16:Math.min(34,W*0.026), pulse=reduce?1:1+0.06*Math.sin(t/900);
     var g=x.createRadialGradient(px,py,0,px,py,R*7*pulse);
     g.addColorStop(0,'rgba(242,199,107,.55)');g.addColorStop(.25,'rgba(212,162,58,.18)');g.addColorStop(1,'rgba(212,162,58,0)');
     x.fillStyle=g;x.beginPath();x.arc(px,py,R*7*pulse,0,6.283);x.fill();
     x.strokeStyle='rgba(242,199,107,.25)';x.lineWidth=1;
-    x.beginPath();x.moveTo(px-R*5,py);x.lineTo(px+R*5,py);x.moveTo(px,py-R*5);x.lineTo(px,py+R*5);x.stroke();
+    var ray=W<700?R*3:R*5;x.beginPath();x.moveTo(px-ray,py);x.lineTo(px+ray,py);x.moveTo(px,py-ray);x.lineTo(px,py+ray);x.stroke();
     x.fillStyle=col.glow;star4(px,py,R*pulse,0.16);x.fill();
     x.fillStyle=col.brass;star4(px,py,R*0.55*pulse,0.2);x.fill();
     // skyline
