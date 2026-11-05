@@ -19,6 +19,7 @@
   --ink:#0F1B2D; --text:#3A4458; --muted:#5D6679;
   --navy:#0F1B2D; --navy-2:#142339; --navy-line:#2A3F5F; --on-navy:#FFFFFF; --on-navy-soft:#C8D1DE; --on-navy-muted:#8E9BB0;
   --brass:#D4A23A; --brass-ink:#6B4F12; --ok:#1E7A4C; --field:#B9B3A5;
+  --sky:#1B2E4B; --skyline:#070F1B; --glow:#F2C76B;
   --display:'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
   --body:'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
@@ -66,18 +67,38 @@ nav a{color:var(--on-navy-soft);text-decoration:none;padding:10px 0}
 nav a:hover{color:var(--on-navy)}
 nav .btn{padding:8px 18px;min-height:44px}
 
-/* hero */
+/* hero: night sky over west-of-Scotland tenements, lit by the pole star */
 .dark{background:var(--navy);color:var(--on-navy)}
 .dark h1,.dark h2{color:var(--on-navy)}
-.hero .wrap{display:flex;flex-wrap:wrap;gap:40px;align-items:center}
-.hero-main{flex:999 1 520px;min-width:0}
-.hero h1{font-weight:800;font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:-.5px;margin-bottom:22px}
-.hero-main>p.lead{font-size:19px;color:var(--on-navy-soft);max-width:600px;margin-bottom:32px}
-.ctas{display:flex;flex-wrap:wrap;gap:12px}
-.hero-side{flex:1 1 280px;min-width:0;display:grid;gap:12px}
-.fact{border:1px solid var(--navy-line);background:var(--navy-2);border-radius:10px;padding:18px 22px}
-.fact b{font-family:var(--display);font-size:19px;display:block;margin-bottom:2px}
-.fact span{font-size:15px;color:var(--on-navy-soft)}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(120% 90% at 80% 10%,var(--sky) 0%,var(--navy) 60%)}
+.hero-sky{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
+.hero .wrap{display:grid;gap:clamp(28px,4vw,44px);padding-block:clamp(56px,9vw,112px) clamp(150px,17vw,210px)}
+.hero-main{max-width:820px;min-width:0}
+.hero .eyebrow{font-size:clamp(13px,1.4vw,15px);letter-spacing:3.5px;color:var(--on-navy-soft)}
+.hero .eyebrow::before{color:var(--brass);background:var(--brass)}
+.hero h1{font-weight:800;font-size:clamp(50px,9.4vw,118px);line-height:.94;letter-spacing:-.035em;margin:6px 0 26px}
+.hero h1 .hl{display:block;color:var(--brass);text-shadow:0 0 42px rgba(212,162,58,.35)}
+.hero .lead{font-size:clamp(17px,1.7vw,20px);color:var(--on-navy-soft);max-width:600px}
+.hero .lead strong{color:var(--on-navy);font-weight:600}
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:14px;max-width:820px}
+.path{position:relative;display:grid;gap:4px;padding:22px 64px 22px 24px;border-radius:12px;text-decoration:none;border:1.5px solid var(--navy-line);background:rgba(10,20,34,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--on-navy);transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.path small{font-size:12px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--brass)}
+.path b{font-family:var(--display);font-size:clamp(20px,2.1vw,24px);line-height:1.2}
+.path span{font-size:15px;color:var(--on-navy-soft)}
+.path i{position:absolute;right:20px;top:50%;translate:0 -50%;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:18px;border:1.5px solid currentColor;transition:translate .2s ease}
+.path:hover{border-color:var(--brass);transform:translateY(-2px)}
+.path:hover i{translate:5px -50%}
+.path.primary{background:var(--brass);border-color:var(--brass);color:#0F1B2D}
+.path.primary small{color:#5A410C}
+.path.primary span{color:#2A2A22}
+.path.primary:hover{background:var(--glow);border-color:var(--glow)}
+.proof{background:var(--navy-2);border-top:1px solid var(--navy-line);color:var(--on-navy)}
+.proof ul{list-style:none;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px 40px;padding-block:26px}
+.proof li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:start}
+.proof li::before{content:"";grid-row:span 2;width:14px;height:14px;margin-top:5px;background:var(--brass);clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%)}
+.proof b{font-family:var(--display);font-size:17px}
+.proof span{font-size:14.5px;color:var(--on-navy-soft)}
+@media (prefers-reduced-motion: reduce){.path,.path i{transition:none}}
 
 /* services */
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
@@ -158,24 +179,27 @@ footer .col{display:grid;gap:4px;align-content:start}
   </div>
 </header>
 
-<section id="top" class="dark hero">
+<section id="top" class="dark hero" aria-label="Introduction">
+  <canvas class="hero-sky" id="sky" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="hero-main">
-      <p class="eyebrow">Central Scotland</p>
-      <h1>A family-run property company you can talk to straight.</h1>
-      <p class="lead">We buy, refurbish and let homes across west central Scotland. Whether you need to sell a flat or house, or want to invest alongside us, you'll deal directly with the two of us and get a close professional relationship.</p>
-      <div class="ctas">
-        <a class="btn btn-brass" href="#contact">I want to sell a property</a>
-        <a class="btn btn-ghost" href="#invest">I'm interested in investing</a>
-      </div>
+      <p class="eyebrow">Renfrewshire · East Renfrewshire · Glasgow</p>
+      <h1>Property, <span class="hl">done straight.</span></h1>
+      <p class="lead">We buy, refurbish and let homes across west central Scotland. Sell to us or invest alongside us, and you deal directly with <strong>the two directors, Bernie and Jade</strong>.</p>
     </div>
-    <div class="hero-side">
-      <div class="fact"><b>Directors, not middlemen</b><span>Bernie and Jade run every deal meticulously to ensure due diligence in all aspects of their business.</span></div>
-      <div class="fact"><b>Local focus</b><span>Flats and houses in Paisley, Renfrewshire, East Renfrewshire and Glasgow.</span></div>
-      <div class="fact"><b>Engineered for certainty!</b><span>We bring an engineer's discipline to property: every deal is planned, tested and checked before we commit.</span></div>
+    <div class="paths">
+      <a class="path primary" href="#contact"><small>Selling</small><b>I want to sell a property</b><span>Any condition, on your timescale, with an offer explained in writing.</span><i aria-hidden="true">→</i></a>
+      <a class="path" href="#invest"><small>Investing</small><b>I'm interested in investing</b><span>Individual deals, with the full numbers and risks up front.</span><i aria-hidden="true">→</i></a>
     </div>
   </div>
 </section>
+<div class="proof">
+  <ul class="wrap">
+    <li><b>Directors, not middlemen</b><span>Bernie and Jade handle every deal themselves, start to finish.</span></li>
+    <li><b>Local focus</b><span>Flats and houses in Paisley, Renfrewshire, East Renfrewshire and Glasgow.</span></li>
+    <li><b>Engineered for certainty</b><span>Every deal is planned, tested and checked before we commit.</span></li>
+  </ul>
+</div>
 
 <section id="services">
   <div class="wrap">
@@ -380,4 +404,78 @@ footer .col{display:grid;gap:4px;align-content:start}
 </script>
 
 
+<script>
+/* night-sky hero animation (separate from the contact form script) */
+(function(){
+  var c=document.getElementById('sky'); if(!c||!c.getContext) return;
+  var x=c.getContext('2d'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var css=getComputedStyle(document.documentElement);
+  function v(n,f){return (css.getPropertyValue(n)||f).trim()||f}
+  var col={brass:v('--brass','#D4A23A'),glow:v('--glow','#F2C76B'),land:v('--skyline','#070F1B')};
+  var W,H,dpr,stars=[],blocks=[],wins=[],seed;
+  function rnd(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}
+  function build(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    W=c.clientWidth;H=c.clientHeight; if(!W||!H) return;
+    c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+    seed=20261105; stars=[]; blocks=[]; wins=[];
+    var n=Math.round(W*H/5200);
+    for(var i=0;i<n;i++) stars.push({x:rnd()*W,y:rnd()*H*0.78,r:rnd()*1.1+0.25,a:rnd()*0.6+0.2,p:rnd()*6.28,s:rnd()*0.8+0.3});
+    var base=H, maxH=Math.min(170,Math.max(95,W*0.13)), xx=-10, spireAt=W*(W<700?0.18:0.62), spireDone=false;
+    while(xx<W+10){
+      var bw=60+rnd()*110, bh=maxH*(0.42+rnd()*0.5), kind=rnd();
+      if(!spireDone && xx+bw>spireAt){bw=46;bh=maxH*1.05;kind=9;spireDone=true}
+      blocks.push({x:xx,w:bw,h:bh,k:kind});
+      if(kind!==9){
+        var cols=Math.max(2,Math.floor((bw-14)/16)), rows=Math.max(2,Math.floor((bh-18)/24));
+        for(var r=0;r<rows;r++)for(var q=0;q<cols;q++){
+          var on=rnd()<0.22;
+          wins.push({x:xx+9+q*((bw-18)/cols)+((bw-18)/cols-7)/2,y:base-bh+14+r*24,on:on,t:rnd()*9000+3000});
+        }
+      }
+      xx+=bw+(rnd()<0.3?0:2);
+    }
+  }
+  function star4(cx,cy,R,inner){
+    x.beginPath();
+    for(var i=0;i<8;i++){var a=-Math.PI/2+i*Math.PI/4, rr=i%2?R*inner:R; x.lineTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr)}
+    x.closePath();
+  }
+  function draw(t){
+    if(!W) return;
+    x.clearRect(0,0,W,H);
+    for(var i=0;i<stars.length;i++){var s=stars[i],a=s.a*(reduce?1:0.65+0.35*Math.sin(t/1000*s.s+s.p));
+      x.globalAlpha=a;x.fillStyle='#E8EEF7';x.beginPath();x.arc(s.x,s.y,s.r,0,6.283);x.fill()}
+    x.globalAlpha=1;
+    // pole star
+    var px=W<700?W-46:W*0.8, py=W<700?52:H*0.2, R=W<700?16:Math.min(34,W*0.026), pulse=reduce?1:1+0.06*Math.sin(t/900);
+    var g=x.createRadialGradient(px,py,0,px,py,R*7*pulse);
+    g.addColorStop(0,'rgba(242,199,107,.55)');g.addColorStop(.25,'rgba(212,162,58,.18)');g.addColorStop(1,'rgba(212,162,58,0)');
+    x.fillStyle=g;x.beginPath();x.arc(px,py,R*7*pulse,0,6.283);x.fill();
+    x.strokeStyle='rgba(242,199,107,.25)';x.lineWidth=1;
+    x.beginPath();x.moveTo(px-R*5,py);x.lineTo(px+R*5,py);x.moveTo(px,py-R*5);x.lineTo(px,py+R*5);x.stroke();
+    x.fillStyle=col.glow;star4(px,py,R*pulse,0.16);x.fill();
+    x.fillStyle=col.brass;star4(px,py,R*0.55*pulse,0.2);x.fill();
+    // skyline
+    x.fillStyle=col.land;
+    for(var b=0;b<blocks.length;b++){var k=blocks[b],top=H-k.h;
+      if(k.k===9){ // church steeple
+        x.fillRect(k.x,top+k.h*0.35,k.w,k.h*0.65);
+        x.beginPath();x.moveTo(k.x-2,top+k.h*0.35);x.lineTo(k.x+k.w/2,top-k.h*0.25);x.lineTo(k.x+k.w+2,top+k.h*0.35);x.fill();
+        continue}
+      x.fillRect(k.x,top,k.w,k.h);
+      if(k.k<0.35){x.beginPath();x.moveTo(k.x,top);x.lineTo(k.x+k.w/2,top-k.w*0.28);x.lineTo(k.x+k.w,top);x.fill()}
+      else{ var cs=k.k<0.7?2:1; for(var j=0;j<cs;j++){var cx=k.x+(j+1)*k.w/(cs+1)-7; x.fillRect(cx,top-12,14,12); x.fillRect(cx+1,top-17,4,5); x.fillRect(cx+8,top-16,4,4)} }
+    }
+    for(var w=0;w<wins.length;w++){var o=wins[w];
+      if(!reduce && t>o.t){o.on=Math.random()<0.24;o.t=t+6000+Math.random()*14000}
+      x.fillStyle=o.on?'rgba(242,199,107,.82)':'rgba(120,140,170,.07)';x.fillRect(o.x,o.y,7,10)}
+  }
+  var raf;
+  function loop(t){draw(t);raf=requestAnimationFrame(loop)}
+  function start(){build(); if(reduce){draw(0)} else {cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)}}
+  var to;window.addEventListener('resize',function(){clearTimeout(to);to=setTimeout(start,150)});
+  start();
+})();
+</script>
 </body></html>
